@@ -27,14 +27,15 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navtoSignup()
+
+        // Handel navigate to sign up fragment
+        navigateToSignUp()
     }
 
-    private fun navtoSignup(){
+    private fun navigateToSignUp(){
         navController = findNavController()
         sign_up_text.setOnClickListener(){
            navController.navigate(StartFragmentDirections.actionStartFragmentToSignUpFragment())
         }
-
     }
 }

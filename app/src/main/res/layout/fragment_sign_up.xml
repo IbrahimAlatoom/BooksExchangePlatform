@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:fontFamily="casual"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Sign Up"
-        android:textColor="@color/design_default_color_on_secondary"
+        android:textColor="@color/primaryTextColor"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,110 +23,104 @@
     <EditText
         android:id="@+id/first_name_plain_text"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/edit_text_background"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="First Name"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         app:layout_constraintEnd_toEndOf="@+id/upper_sign_up_text"
         app:layout_constraintStart_toStartOf="@+id/upper_sign_up_text"
-        app:layout_constraintTop_toBottomOf="@+id/upper_sign_up_text" />
+        app:layout_constraintTop_toBottomOf="@+id/first_name_text" />
 
     <TextView
         android:id="@+id/first_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="16dp"
         android:text="First Name"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintBottom_toTopOf="@+id/first_name_plain_text"
-        app:layout_constraintStart_toStartOf="@+id/first_name_plain_text" />
-
-    <TextView
-        android:id="@+id/second_name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:text="Second Name"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintBottom_toTopOf="@+id/second_name_plain_text"
-        app:layout_constraintStart_toStartOf="@+id/second_name_plain_text" />
-
-    <EditText
-        android:id="@+id/second_name_plain_text"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Second Name"
-        app:layout_constraintEnd_toEndOf="@+id/first_name_plain_text"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/first_name_plain_text"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_plain_text" />
+        app:layout_constraintTop_toBottomOf="@+id/upper_sign_up_text" />
+
 
     <EditText
         android:id="@+id/email_plain_text"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/edit_text_background"
         android:ems="10"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/second_name_plain_text"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/first_name_plain_text"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/second_name_plain_text"
-        app:layout_constraintTop_toBottomOf="@+id/second_name_plain_text" />
+        app:layout_constraintStart_toStartOf="@+id/first_name_plain_text"
+        app:layout_constraintTop_toBottomOf="@+id/eamil_text" />
 
     <TextView
         android:id="@+id/eamil_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="8dp"
         android:text="E-mail"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintBottom_toTopOf="@+id/email_plain_text"
-        app:layout_constraintStart_toStartOf="@+id/email_plain_text" />
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/first_name_plain_text"
+        app:layout_constraintTop_toBottomOf="@+id/first_name_plain_text" />
 
     <EditText
         android:id="@+id/password_plain_text"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_height="50dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/email_plain_text"
         app:layout_constraintStart_toStartOf="@+id/email_plain_text"
-        app:layout_constraintTop_toBottomOf="@+id/email_plain_text" />
+        app:layout_constraintTop_toBottomOf="@+id/password_text" />
 
     <TextView
         android:id="@+id/password_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="8dp"
         android:text="Password"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintBottom_toTopOf="@+id/password_plain_text"
-        app:layout_constraintStart_toStartOf="@+id/password_plain_text" />
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/password_plain_text"
+        app:layout_constraintTop_toBottomOf="@+id/email_plain_text" />
 
     <EditText
         android:id="@+id/phone_plain_text"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_height="50dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="@+id/password_plain_text"
         app:layout_constraintStart_toStartOf="@+id/password_plain_text"
-        app:layout_constraintTop_toBottomOf="@+id/password_plain_text" />
+        app:layout_constraintTop_toBottomOf="@+id/phone_text" />
 
     <TextView
         android:id="@+id/phone_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="8dp"
         android:text="Phone Numder"
-        android:textColor="@color/design_default_color_on_secondary"
-        app:layout_constraintBottom_toTopOf="@+id/phone_plain_text"
-        app:layout_constraintStart_toStartOf="@+id/phone_plain_text" />
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/phone_plain_text"
+        app:layout_constraintTop_toBottomOf="@+id/password_plain_text" />
 
     <Button
         android:id="@+id/sign_up_button"
@@ -134,6 +128,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Sign Up"
+        android:textSize="18sp"
+        android:textColor="@color/primaryTextColor"
+        android:background="@color/primaryLightColor"
         app:layout_constraintEnd_toEndOf="@+id/phone_plain_text"
         app:layout_constraintStart_toStartOf="@+id/phone_plain_text"
         app:layout_constraintTop_toBottomOf="@+id/phone_plain_text" />
