@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "539538505225",
+    "firebase_url": "https://booksexchange-86ca8.firebaseio.com",
+    "project_id": "booksexchange-86ca8",
+    "storage_bucket": "booksexchange-86ca8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539538505225:android:ee753c9fee7134015dc2d8",
+        "android_client_info": {
+          "package_name": "com.jordan.booksexchange"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539538505225-e197vjk7ks6rb6ap91rlv8n97hmfc0jj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1KUhTx3f3MbI6NUpFV9y9qUcCHVQq6DQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539538505225-e197vjk7ks6rb6ap91rlv8n97hmfc0jj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,5 +16,14 @@
         android:id="@+id/signUpFragment"
         android:name="com.jordan.booksexchange.fragments.signup.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_topicFragment"
+            app:destination="@id/topicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicFragment"
+        android:name="com.jordan.booksexchange.fragments.topics.TopicFragment"
+        android:label="fragment_topic"
+        tools:layout="@layout/fragment_topic" />
 </navigation>
