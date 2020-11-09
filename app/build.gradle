@@ -44,6 +44,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
+    //Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:26.0.0')
 

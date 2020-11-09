@@ -29,13 +29,19 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Handel navigate to sign up fragment
+        navController = findNavController()
         navigateToSignUp()
+        navigateToSignIn()
     }
 
     private fun navigateToSignUp(){
-        navController = findNavController()
         sign_up_text.setOnClickListener(){
            navController.navigate(StartFragmentDirections.actionStartFragmentToSignUpFragment())
+        }
+    }
+    private fun navigateToSignIn(){
+        move_to_sign_in.setOnClickListener(){
+            navController.navigate(StartFragmentDirections.actionStartFragmentToSignInFragment())
         }
     }
 }

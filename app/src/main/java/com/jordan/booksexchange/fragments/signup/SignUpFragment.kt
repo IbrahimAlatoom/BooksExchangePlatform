@@ -11,8 +11,10 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
+import com.jordan.booksexchange.models.User
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 
@@ -39,6 +41,7 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
         handelSignUp()
+
     }
 
     // Function to handel sign up with null information
@@ -59,12 +62,14 @@ class SignUpFragment : Fragment() {
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
 
+                        val user = User(auth.currentUser?.uid!!,name,email,phone, mutableListOf())
+                        val db = Firebase.firestore
+                        db.collection("users").document(auth.currentUser?.uid!!).set(user)
+                            .addOnSuccessListener { // If sign up happens successfully move to choose topics fragment
+                                navController.navigate(SignUpFragmentDirections.
+                                actionSignUpFragmentToTopicFragment()) }
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("sign up", "createUserWithEmail:success")
-
-                        // If sign up happens successfully move to choose topics fragment
-                        val user = auth.currentUser
-                        navController.navigate(SignUpFragmentDirections.actionSignUpFragmentToTopicFragment())
                         }
                     else {
                         // If sign in fails, display a message to the user.

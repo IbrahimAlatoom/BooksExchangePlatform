@@ -48,10 +48,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Sign Up now"
-        android:textColor="@color/design_default_color_on_secondary"
+        android:textColor="@color/primaryColor"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/sign_in_up_text"
         app:layout_constraintStart_toEndOf="@+id/sign_in_up_text"
         app:layout_constraintTop_toTopOf="@+id/sign_in_up_text" />
+
+    <TextView
+        android:id="@+id/move_to_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Sign In"
+        android:textColor="@color/primaryDarkColor"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/welcome_text"
+        app:layout_constraintStart_toStartOf="@+id/welcome_text"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
