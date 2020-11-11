@@ -1,14 +1,22 @@
 package com.jordan.booksexchange.fragments.topics
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.jordan.booksexchange.R
+import com.jordan.booksexchange.items.TopicItem
+import com.jordan.booksexchange.models.BookTopic
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
+import kotlinx.android.synthetic.main.fragment_topic.*
 
 
 class TopicFragment : Fragment() {
+
+    val topicAdapter = GroupAdapter<GroupieViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,5 +32,37 @@ class TopicFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-}
+        topicsAdapter()
+
+
+    }
+        // Topic RecycleView
+        private fun topicsAdapter(){
+            val newName = mutableListOf("")
+            // Separator between words in enum class
+            HandelStringInEnum(newName)
+            for (i in newName){
+                topicAdapter.add(TopicItem(i))
+            }
+            topics_rv.adapter = topicAdapter
+            topics_rv.layoutManager = GridLayoutManager(
+                requireContext(), 3, GridLayoutManager.VERTICAL, false
+            )
+        }
+        // Function to Separate between words in enum class
+        private fun HandelStringInEnum( newName :MutableList<String> ):MutableList<String> {
+            var name : String
+            for (book in BookTopic.values()) {
+                name = book.toString()
+                name = name.replace("_"," ")
+                newName.add(name)
+            }
+            newName.remove("")
+            return newName
+        }
+
+
+    }
