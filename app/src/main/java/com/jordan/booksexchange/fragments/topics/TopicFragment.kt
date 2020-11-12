@@ -1,5 +1,6 @@
 package com.jordan.booksexchange.fragments.topics
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +13,13 @@ import com.jordan.booksexchange.models.BookTopic
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_topic.*
+import kotlinx.android.synthetic.main.topic_item.*
 
 
 class TopicFragment : Fragment() {
+    private var selectedCardCounter = 0
+    private val topicAdapter = GroupAdapter<GroupieViewHolder>()
 
-    val topicAdapter = GroupAdapter<GroupieViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,32 +40,34 @@ class TopicFragment : Fragment() {
 
         topicsAdapter()
 
-
     }
         // Topic RecycleView
         private fun topicsAdapter(){
             val newName = mutableListOf("")
             // Separator between words in enum class
-            HandelStringInEnum(newName)
-            for (i in newName){
-                topicAdapter.add(TopicItem(i))
+            handelStringInEnum(newName)
+            for (type in newName){
+                topicAdapter.add(TopicItem(type,::onTopicItemSelected))
             }
             topics_rv.adapter = topicAdapter
             topics_rv.layoutManager = GridLayoutManager(
-                requireContext(), 3, GridLayoutManager.VERTICAL, false
-            )
+                requireContext(), 3, GridLayoutManager.VERTICAL, false)
+
         }
         // Function to Separate between words in enum class
-        private fun HandelStringInEnum( newName :MutableList<String> ):MutableList<String> {
+        private fun handelStringInEnum(newName: MutableList<String>):MutableList<String> {
             var name : String
             for (book in BookTopic.values()) {
                 name = book.toString()
-                name = name.replace("_"," ")
+                name = name.replace("_", " ")
                 newName.add(name)
             }
             newName.remove("")
             return newName
         }
+       private fun onTopicItemSelected(){
+           selectedCardCounter += 1
 
+       }
 
     }

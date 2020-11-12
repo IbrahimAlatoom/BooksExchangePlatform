@@ -1,7 +1,8 @@
 package com.jordan.booksexchange.models
 
 enum class BookTopic() {
-    Computer_Science, Computer_Engineer, Medicine
+    Computer_Science, Computer_Engineering, Medicine , Math , Industrial_Engineering ,
+    Mechanical_Engineering ,Network_Engineering , Software_Engineering
 }
 
 
