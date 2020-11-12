@@ -1,6 +1,6 @@
 package com.jordan.booksexchange.fragments.topics
 
-import android.graphics.Color
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +13,7 @@ import com.jordan.booksexchange.models.BookTopic
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_topic.*
-import kotlinx.android.synthetic.main.topic_item.*
+
 
 
 class TopicFragment : Fragment() {
@@ -43,31 +43,30 @@ class TopicFragment : Fragment() {
     }
         // Topic RecycleView
         private fun topicsAdapter(){
-            val newName = mutableListOf("")
-            // Separator between words in enum class
-            handelStringInEnum(newName)
-            for (type in newName){
-                topicAdapter.add(TopicItem(type,::onTopicItemSelected))
+            for (book in BookTopic.values()){
+                topicAdapter.add(TopicItem(getTopicBookName(book),::onTopicItemSelected))
             }
             topics_rv.adapter = topicAdapter
             topics_rv.layoutManager = GridLayoutManager(
                 requireContext(), 3, GridLayoutManager.VERTICAL, false)
-
         }
-        // Function to Separate between words in enum class
-        private fun handelStringInEnum(newName: MutableList<String>):MutableList<String> {
-            var name : String
-            for (book in BookTopic.values()) {
-                name = book.toString()
-                name = name.replace("_", " ")
-                newName.add(name)
+        private fun getTopicBookName(type: BookTopic): String {
+            return when(type){
+            BookTopic.Medicine -> "Medicine"
+            BookTopic.ComputerScience -> "Computer Science"
+            BookTopic.ComputerEngineering -> "Computer Engineering"
+            BookTopic.IndustrialEngineering -> "Industrial Engineering"
+            BookTopic.Math -> "Math"
+            BookTopic.MechanicalEngineering -> "MechanicalEngineering"
+            BookTopic.NetworkEngineering -> "Network Engineering"
+            BookTopic.SoftwareEngineering -> "Software Engineering"
             }
-            newName.remove("")
-            return newName
-        }
+         }
        private fun onTopicItemSelected(){
            selectedCardCounter += 1
 
        }
+
+
 
     }

@@ -2,13 +2,9 @@ package com.jordan.booksexchange.items
 
 import android.graphics.Color
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import com.jordan.booksexchange.R
-import com.jordan.booksexchange.models.BookTopic
-import com.jordan.booksexchange.models.User
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import kotlinx.android.synthetic.main.topic_item.*
 import kotlinx.android.synthetic.main.topic_item.view.*
 import org.jetbrains.anko.backgroundColor
 
