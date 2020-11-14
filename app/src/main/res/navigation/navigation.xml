@@ -28,7 +28,11 @@
         android:id="@+id/topicFragment"
         android:name="com.jordan.booksexchange.fragments.topics.TopicFragment"
         android:label="fragment_topic"
-        tools:layout="@layout/fragment_topic" />
+        tools:layout="@layout/fragment_topic" >
+        <action
+            android:id="@+id/action_topicFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.jordan.booksexchange.fragments.signin.SignInFragment"

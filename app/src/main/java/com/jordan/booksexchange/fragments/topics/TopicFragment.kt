@@ -2,11 +2,16 @@ package com.jordan.booksexchange.fragments.topics
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
 import com.jordan.booksexchange.items.TopicItem
 import com.jordan.booksexchange.models.BookTopic
@@ -19,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_topic.*
 class TopicFragment : Fragment() {
     private var selectedCardCounter = 0
     private val topicAdapter = GroupAdapter<GroupieViewHolder>()
-
+    private lateinit var topicViewModel: TopicViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,35 +43,53 @@ class TopicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Create the view model
+        topicViewModel = ViewModelProviders.of(this).get(TopicViewModel::class.java)
+
+        // TRack
+        topicViewModel.selectedCardCounter.observe(viewLifecycleOwner, {
+             selectedCardCounter -> //
+            if(selectedCardCounter == 3) {
+                // Show the button
+                move_to_home_button.visibility = View.VISIBLE
+            }
+        })
+
+        topicViewModel.selectedTopicsList.observe(viewLifecycleOwner, {
+            selectedTopicsList ->
+            Log.i("topics", "user new list: $selectedTopicsList")
+        })
+
+        move_to_home_button.setOnClickListener {
+            updateUserTopics()
+
+        }
+
         topicsAdapter()
 
     }
         // Topic RecycleView
         private fun topicsAdapter(){
             for (book in BookTopic.values()){
-                topicAdapter.add(TopicItem(getTopicBookName(book),::onTopicItemSelected))
+                topicAdapter.add(TopicItem(book, topicViewModel, ::onTopicItemSelected))
             }
             topics_rv.adapter = topicAdapter
             topics_rv.layoutManager = GridLayoutManager(
                 requireContext(), 3, GridLayoutManager.VERTICAL, false)
         }
-        private fun getTopicBookName(type: BookTopic): String {
-            return when(type){
-            BookTopic.Medicine -> "Medicine"
-            BookTopic.ComputerScience -> "Computer Science"
-            BookTopic.ComputerEngineering -> "Computer Engineering"
-            BookTopic.IndustrialEngineering -> "Industrial Engineering"
-            BookTopic.Math -> "Math"
-            BookTopic.MechanicalEngineering -> "MechanicalEngineering"
-            BookTopic.NetworkEngineering -> "Network Engineering"
-            BookTopic.SoftwareEngineering -> "Software Engineering"
-            }
-         }
-       private fun onTopicItemSelected(){
-           selectedCardCounter += 1
 
+       private fun onTopicItemSelected(topic: BookTopic){
+           // his wii update the counter
+           topicViewModel.onCardSelected(topic)
        }
 
-
+        private fun updateUserTopics() {
+            val db = Firebase.firestore
+            val userId = Firebase.auth.currentUser?.uid
+            db.collection("users").document("$userId").update("topics"
+            , topicViewModel.selectedTopicsList.value).addOnSuccessListener {
+                // Update Done
+            }
+        }
 
     }

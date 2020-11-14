@@ -1,5 +1,18 @@
 package com.jordan.booksexchange.models
 
+ fun getTopicBookName(type: BookTopic): String {
+    return when(type){
+        BookTopic.Medicine -> "Medicine"
+        BookTopic.ComputerScience -> "Computer Science"
+        BookTopic.ComputerEngineering -> "Computer Engineering"
+        BookTopic.IndustrialEngineering -> "Industrial Engineering"
+        BookTopic.Math -> "Math"
+        BookTopic.MechanicalEngineering -> "MechanicalEngineering"
+        BookTopic.NetworkEngineering -> "Network Engineering"
+        BookTopic.SoftwareEngineering -> "Software Engineering"
+    }
+}
+
 enum class BookTopic() {
     ComputerScience, ComputerEngineering, Medicine , Math , IndustrialEngineering ,
     MechanicalEngineering ,NetworkEngineering , SoftwareEngineering
