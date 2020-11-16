@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -22,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_topic.*
 
 
 class TopicFragment : Fragment() {
-    private var selectedCardCounter = 0
+    private lateinit var navController: NavController
     private val topicAdapter = GroupAdapter<GroupieViewHolder>()
     private lateinit var topicViewModel: TopicViewModel
 
@@ -43,6 +45,8 @@ class TopicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        navController = findNavController()
+
         // Create the view model
         topicViewModel = ViewModelProviders.of(this).get(TopicViewModel::class.java)
 
@@ -62,6 +66,7 @@ class TopicFragment : Fragment() {
 
         move_to_home_button.setOnClickListener {
             updateUserTopics()
+
 
         }
 
@@ -89,6 +94,7 @@ class TopicFragment : Fragment() {
             db.collection("users").document("$userId").update("topics"
             , topicViewModel.selectedTopicsList.value).addOnSuccessListener {
                 // Update Done
+            navController.navigate(TopicFragmentDirections.actionTopicFragmentToHomeFragment())
             }
         }
 
