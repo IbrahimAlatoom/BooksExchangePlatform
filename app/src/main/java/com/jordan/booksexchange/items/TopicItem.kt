@@ -10,7 +10,6 @@ import com.jordan.booksexchange.models.getTopicBookName
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.topic_item.view.*
-import org.jetbrains.anko.backgroundColor
 
 class TopicItem(val topic :BookTopic ,val topicViewModel: TopicViewModel,
                 val action :(BookTopic)->Unit): Item<GroupieViewHolder>() {

@@ -7,7 +7,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.small_item.view.*
 
-class SmallItem (private val book :BookTopic): Item<GroupieViewHolder>() {
+class SmallItem(private val book: BookTopic): Item<GroupieViewHolder>() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.smal_item_text.text= getTopicBookName(book)
     }

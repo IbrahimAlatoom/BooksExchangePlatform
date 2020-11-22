@@ -10,6 +10,7 @@ import com.jordan.booksexchange.R
 import com.jordan.booksexchange.items.BigItem
 import com.jordan.booksexchange.items.SmallItem
 import com.jordan.booksexchange.models.BookTopic
+import com.jordan.booksexchange.models.getTopicBookName
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -30,27 +31,29 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        HandelBigItemRv()
+        HandelSmallItemRv()
+
+    }
+    private fun HandelBigItemRv(){
         bigItemAdapter = GroupAdapter()
-        bigItemAdapter.add(BigItem(BookTopic.SoftwareEngineering))
-        bigItemAdapter.add(BigItem(BookTopic.NetworkEngineering))
-        bigItemAdapter.add(BigItem(BookTopic.IndustrialEngineering))
+
+        for (bookTopic in BookTopic.values())
+            bigItemAdapter.add(BigItem(bookTopic))
         big_item_rv.adapter = bigItemAdapter
         big_item_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL
             ,false)
-        smallItemAdapter = GroupAdapter()
-        smallItemAdapter.add(SmallItem(BookTopic.NetworkEngineering))
-        smallItemAdapter.add(SmallItem(BookTopic.IndustrialEngineering))
-        smallItemAdapter.add(SmallItem(BookTopic.MechanicalEngineering))
-        smallItemAdapter.add(SmallItem(BookTopic.MechanicalEngineering))
-        smallItemAdapter.add(SmallItem(BookTopic.MechanicalEngineering))
-        smallItemAdapter.add(SmallItem(BookTopic.MechanicalEngineering))
-        smallItemAdapter.add(SmallItem(BookTopic.MechanicalEngineering))
+    }
+    private fun HandelSmallItemRv(){
 
+        smallItemAdapter = GroupAdapter()
+
+        for (bookTopic in BookTopic.values())
+            smallItemAdapter.add(SmallItem(bookTopic))
 
         small_item_rv.adapter = smallItemAdapter
         small_item_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL
             ,false)
-
-
     }
 }
