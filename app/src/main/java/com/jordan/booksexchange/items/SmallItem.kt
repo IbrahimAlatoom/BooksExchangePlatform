@@ -1,5 +1,6 @@
 package com.jordan.booksexchange.items
 
+import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.jordan.booksexchange.R
 import com.jordan.booksexchange.models.BookTopic
 import com.jordan.booksexchange.models.getTopicBookName

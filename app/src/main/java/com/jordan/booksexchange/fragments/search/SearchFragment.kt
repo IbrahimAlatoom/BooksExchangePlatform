@@ -1,4 +1,4 @@
-package com.jordan.booksexchange
+package com.jordan.booksexchange.fragments.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jordan.booksexchange.R
 import com.jordan.booksexchange.items.PostItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -42,5 +43,7 @@ class SearchFragment : Fragment() {
         search_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL
             ,false)
     }
+
+
 
 }
