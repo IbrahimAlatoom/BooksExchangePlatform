@@ -10,20 +10,17 @@ import com.jordan.booksexchange.models.Book
 import com.jordan.booksexchange.models.BookTopic
 import com.jordan.booksexchange.models.University
 
-class SearchViewModel(university :String , school :String) : ViewModel() {
-    val post = MutableLiveData<Book>()
+class SearchViewModel() : ViewModel() {
+    val postList = MutableLiveData<List<Book>>()
     init {
-        getPosts(university,school)
+
     }
 
-    private fun getPosts(university :String , school :String) {
+     fun getPosts(university :String , topic :String) {
         val db =
-            Firebase.firestore.collection("Posts").whereEqualTo(university, University.values())
-                .whereEqualTo(school, BookTopic.values()).get().addOnSuccessListener {
-
+            Firebase.firestore.collection("Posts").whereEqualTo("university", university)
+                .whereEqualTo("topic", topic).get().addOnSuccessListener {
+                       postList.value = it.toObjects(Book::class.java)
                 }
-
-
-
     }
 }

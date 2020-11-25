@@ -13,6 +13,7 @@ import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
 import com.jordan.booksexchange.models.Book
 import com.jordan.booksexchange.models.BookTopic
+import com.jordan.booksexchange.models.StringToBookTopic
 import com.jordan.booksexchange.models.University
 import kotlinx.android.synthetic.main.fragment_post.*
 
@@ -67,20 +68,7 @@ class PostFragment : Fragment() {
 
         }
     }
-    private fun StringToBookTopic(schName : String) : BookTopic{
-        return when(schName) {
-            "Medicine" -> BookTopic.Medicine
-            "Computer Science" -> BookTopic.ComputerScience
-            "Computer Engineering"  -> BookTopic.ComputerEngineering
-            "Industrial Engineering" ->  BookTopic.IndustrialEngineering
-            "Math"  ->  BookTopic.Math
-            "MechanicalEngineering"  -> BookTopic.MechanicalEngineering
-            "Network Engineering"  ->  BookTopic.NetworkEngineering
-            "Software Engineering" ->  BookTopic.SoftwareEngineering
 
-            else -> BookTopic.Medicine
-        }
-    }
     private fun StringToUni(uniName : String) : University {
 
         return when(uniName)

@@ -1,15 +1,31 @@
 package com.jordan.booksexchange.models
 
  fun getTopicBookName(type: BookTopic): String {
-    return when(type){
-        BookTopic.Medicine -> "Medicine"
-        BookTopic.ComputerScience -> "Computer Science"
-        BookTopic.ComputerEngineering -> "Computer Engineering"
-        BookTopic.IndustrialEngineering -> "Industrial Engineering"
-        BookTopic.Math -> "Math"
-        BookTopic.MechanicalEngineering -> "MechanicalEngineering"
-        BookTopic.NetworkEngineering -> "Network Engineering"
-        BookTopic.SoftwareEngineering -> "Software Engineering"
+     return when (type) {
+         BookTopic.Medicine -> "Medicine"
+         BookTopic.ComputerScience -> "Computer Science"
+         BookTopic.ComputerEngineering -> "Computer Engineering"
+         BookTopic.IndustrialEngineering -> "Industrial Engineering"
+         BookTopic.Math -> "Math"
+         BookTopic.MechanicalEngineering -> "MechanicalEngineering"
+         BookTopic.NetworkEngineering -> "Network Engineering"
+         BookTopic.SoftwareEngineering -> "Software Engineering"
+     }
+
+ }
+
+fun StringToBookTopic(schName : String) : BookTopic{
+    return when(schName) {
+        "Medicine" -> BookTopic.Medicine
+        "Computer Science" -> BookTopic.ComputerScience
+        "Computer Engineering"  -> BookTopic.ComputerEngineering
+        "Industrial Engineering" ->  BookTopic.IndustrialEngineering
+        "Math"  ->  BookTopic.Math
+        "MechanicalEngineering"  -> BookTopic.MechanicalEngineering
+        "Network Engineering"  ->  BookTopic.NetworkEngineering
+        "Software Engineering" ->  BookTopic.SoftwareEngineering
+
+        else -> BookTopic.Medicine
     }
 }
 
