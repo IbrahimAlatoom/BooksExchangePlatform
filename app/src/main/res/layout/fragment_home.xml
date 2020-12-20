@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/noti_image_view"
         android:layout_width="30dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"

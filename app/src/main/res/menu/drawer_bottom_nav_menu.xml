@@ -14,6 +14,11 @@
         android:icon="@drawable/ic_round_search_24"
         android:id="@+id/searchFragment"
         />
+    <item
+        android:title="Chat"
+        android:id="@+id/chatFragment"
+        android:icon="@drawable/ic_outline_chat_24"
+        />
 
 
 

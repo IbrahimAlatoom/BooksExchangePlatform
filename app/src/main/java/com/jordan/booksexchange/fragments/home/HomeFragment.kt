@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
 
         HandelBigItemRv()
         HandelSmallItemRv()
-
+        MoveToNotificationFragment()
 
     }
     private fun HandelBigItemRv(){
@@ -86,5 +86,12 @@ class HomeFragment : Fragment() {
     fun openDetailsFragment(postId:String){
         val navController = findNavController()
         navController.navigate(HomeFragmentDirections.actionHomeFragmentToPostDetailsFragment(postId))
+    }
+    fun MoveToNotificationFragment() {
+
+        noti_image_view.setOnClickListener() {
+            val navController = findNavController()
+            navController.navigate(HomeFragmentDirections.actionHomeFragmentToNotificationFragment())
+        }
     }
 }

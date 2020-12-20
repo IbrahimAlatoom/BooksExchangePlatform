@@ -45,9 +45,9 @@ class PostDetailsFragment : Fragment() {
             if (it != null){
                 Log.i("postD",it.name.toString())
                 post_details_bname.text = it.name
-
-
-
+                post_details_bdetails.text = it.description
+                post_details_bttopic.text = it.topic.toString()
+                post_details_buni.text = it.university.toString()
             }
         }
 

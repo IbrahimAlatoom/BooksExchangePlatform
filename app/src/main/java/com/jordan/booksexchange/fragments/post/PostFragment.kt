@@ -60,7 +60,7 @@ class PostFragment : Fragment() {
                 StringToBookTopic(schName), detail, ""
             )
 
-            db.collection("Posts").add(post).addOnSuccessListener {
+            ref.set(post).addOnSuccessListener {
                 navController.navigate(PostFragmentDirections.actionPostFragmentToHomeFragment())
 
                 Toast.makeText(

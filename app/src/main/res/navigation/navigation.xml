@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_homeFragment_to_postDetailsFragment"
             app:destination="@id/postDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -100,4 +103,14 @@
             android:name="postId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.jordan.booksexchange.fragments.chatting.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.jordan.booksexchange.fragments.notification.notificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>
