@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -24,6 +25,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel : HomeViewModel
     private lateinit var bigItemAdapter : GroupAdapter<GroupieViewHolder>
     private lateinit var smallItemAdapter : GroupAdapter<GroupieViewHolder>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,12 +55,20 @@ class HomeFragment : Fragment() {
     }
     private fun HandelBigItemRv(){
         bigItemAdapter = GroupAdapter()
-
-        for (bookTopic in BookTopic.values())
-            bigItemAdapter.add(BigItem(bookTopic))
         big_item_rv.adapter = bigItemAdapter
         big_item_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL
             ,false)
+        homeViewModel.books.observe(viewLifecycleOwner,{
+            bigItemAdapter.clear()
+            if(it != null ){
+            for (book in it)
+                bigItemAdapter.add(BigItem(book) { postId ->
+                    openDetailsFragment(postId)
+                })
+            }
+        })
+
+
     }
     private fun HandelSmallItemRv(){
 
@@ -71,5 +81,10 @@ class HomeFragment : Fragment() {
         small_item_rv.adapter = smallItemAdapter
         small_item_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL
             ,false)
+    }
+
+    fun openDetailsFragment(postId:String){
+        val navController = findNavController()
+        navController.navigate(HomeFragmentDirections.actionHomeFragmentToPostDetailsFragment(postId))
     }
 }

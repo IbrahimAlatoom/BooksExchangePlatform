@@ -4,7 +4,7 @@ enum class University(){
      Just , JU , Psut
 }
 
-class Book(val name : String, val publisherId :String? , val university : University? ,
+class Book(val name : String, val publisherId :String? ,val bookId :String, val university : University? ,
              val topic : BookTopic? , val description : String, val ImageUrl : String ){
-    constructor():this("","",null,null,"","")
+    constructor():this("","","",null,null,"","")
 }

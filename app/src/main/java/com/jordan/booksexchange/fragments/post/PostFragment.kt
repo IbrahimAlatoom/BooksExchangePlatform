@@ -1,21 +1,22 @@
 package com.jordan.booksexchange.fragments.post
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
 import com.jordan.booksexchange.models.Book
-import com.jordan.booksexchange.models.BookTopic
 import com.jordan.booksexchange.models.StringToBookTopic
 import com.jordan.booksexchange.models.University
 import kotlinx.android.synthetic.main.fragment_post.*
+
 
 class PostFragment : Fragment() {
     private lateinit var navController: NavController
@@ -25,7 +26,8 @@ class PostFragment : Fragment() {
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_post, container, false)
     }
@@ -49,16 +51,23 @@ class PostFragment : Fragment() {
                 return@setOnClickListener
             }
 //            Upload Post to Firebase
-            val userId = Firebase.auth.currentUser?.uid
-            val post: Book = Book(
-                bookName, userId, StringToUni(uniName),
-                StringToBookTopic(schName), detail, "")
-
             val db = Firebase.firestore
+            val userId = Firebase.auth.currentUser?.uid
+            val ref: DocumentReference = db.collection("Posts").document()
+            val postId = ref.id
+            val post: Book = Book(
+                bookName, userId, postId ,StringToUni(uniName),
+                StringToBookTopic(schName), detail, ""
+            )
+
             db.collection("Posts").add(post).addOnSuccessListener {
                 navController.navigate(PostFragmentDirections.actionPostFragmentToHomeFragment())
 
-                Toast.makeText(requireContext(), "You Have Added Post successfully", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    requireContext(),
+                    "You Have Added Post successfully",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             }
 
@@ -69,13 +78,13 @@ class PostFragment : Fragment() {
         }
     }
 
-    private fun StringToUni(uniName : String) : University {
+    private fun StringToUni(uniName: String) : University {
 
         return when(uniName)
         {
             "Just" -> University.Just
             "JU" -> University.JU
-            "Psut" ->University.Psut
+            "Psut" -> University.Psut
 
             else -> University.Psut
         }

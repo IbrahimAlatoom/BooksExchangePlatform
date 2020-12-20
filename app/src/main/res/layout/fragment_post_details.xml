@@ -8,7 +8,7 @@
 
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/post_details_bimage"
         android:layout_width="0dp"
         android:layout_height="300dp"
         android:scaleType="center"
@@ -17,4 +17,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius_bottom_left="16dp" />
+
+    <TextView
+        android:id="@+id/post_details_bname"
+        android:layout_width="98dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="book"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_bimage" />
+
+    <TextView
+        android:id="@+id/post_details_bttopic"
+        android:layout_width="179dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="16dp"
+        android:text="mid"
+        app:layout_constraintStart_toStartOf="@+id/post_details_bname"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_bname" />
+
+    <TextView
+        android:id="@+id/post_details_bdetails"
+        android:layout_width="378dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        android:text="d"
+        app:layout_constraintStart_toStartOf="@+id/post_details_bttopic"
+        app:layout_constraintTop_toBottomOf="@+id/post_details_bttopic" />
+
+    <TextView
+        android:id="@+id/post_details_buni"
+        android:layout_width="179dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/post_details_bttopic"
+        app:layout_constraintStart_toEndOf="@+id/post_details_bttopic"
+        app:layout_constraintTop_toTopOf="@+id/post_details_bttopic" />
 </androidx.constraintlayout.widget.ConstraintLayout>
