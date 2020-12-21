@@ -2,37 +2,106 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:layout_margin="8dp">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/big_item_image"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="1dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bwbook"
+        android:id="@+id/big_item_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primaryDarkColor"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489"
-        app:riv_corner_radius="8dp"
-        app:riv_mutate_background="false"
-        app:riv_oval="false" />
+        app:layout_constraintVertical_bias="0.0"
+        app:riv_corner_radius="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/big_item_profile_pic"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bwbook"
+        app:layout_constraintStart_toStartOf="@+id/big_item_background"
+        app:layout_constraintTop_toTopOf="@+id/big_item_background"
+        app:riv_corner_radius="16dp"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/big_item_text"
+        android:id="@+id/big_item_uni_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Book Name"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:text="JUST"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/big_item_profile_pic"
+        app:layout_constraintTop_toTopOf="@+id/big_item_profile_pic" />
+
+    <TextView
+        android:id="@+id/big_item_sch_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Engineering"
+        android:textColor="@color/primaryLightColor"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/big_item_uni_name"
+        app:layout_constraintTop_toBottomOf="@+id/big_item_uni_name" />
+
+    <TextView
+        android:id="@+id/big_item_description_and_name"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:text="Math 102"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/big_item_image" />
+        app:layout_constraintTop_toBottomOf="@+id/big_item_profile_pic" />
+
+    <ImageView
+        android:id="@+id/bif_item_book_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/big_item_request_button"
+        app:layout_constraintEnd_toEndOf="@+id/big_item_background"
+        app:layout_constraintStart_toStartOf="@+id/big_item_background"
+        app:layout_constraintTop_toBottomOf="@+id/big_item_description_and_name"
+        app:srcCompat="@drawable/bwbook" />
+
+    <Button
+        android:id="@+id/big_item_request_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Request Book"
+        app:layout_constraintBottom_toBottomOf="@+id/big_item_background"
+        app:layout_constraintEnd_toEndOf="@+id/big_item_background"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/big_item_background" />
+
+    <TextView
+        android:id="@+id/big_item_book_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Math"
+        android:textColor="@color/primaryLightColor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/big_item_sch_name"
+        app:layout_constraintStart_toEndOf="@+id/big_item_sch_name"
+        app:layout_constraintTop_toTopOf="@+id/big_item_sch_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

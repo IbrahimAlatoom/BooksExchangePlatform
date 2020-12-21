@@ -42,30 +42,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/big_item_rv"
         android:layout_width="0dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcom_back_massege" />
 
-    <TextView
-        android:id="@+id/from_your_topic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:text="Your Favourit Topics"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/big_item_rv" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/small_item_rv"
-        android:layout_width="0dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/from_your_topic" />
 </androidx.constraintlayout.widget.ConstraintLayout>

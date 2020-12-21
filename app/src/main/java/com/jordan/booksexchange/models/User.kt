@@ -7,7 +7,7 @@ package com.jordan.booksexchange.models
          BookTopic.ComputerEngineering -> "Computer Engineering"
          BookTopic.IndustrialEngineering -> "Industrial Engineering"
          BookTopic.Math -> "Math"
-         BookTopic.MechanicalEngineering -> "MechanicalEngineering"
+         BookTopic.MechanicalEngineering -> "Mechanical Engineering"
          BookTopic.NetworkEngineering -> "Network Engineering"
          BookTopic.SoftwareEngineering -> "Software Engineering"
      }
@@ -21,7 +21,7 @@ fun StringToBookTopic(schName : String) : BookTopic{
         "Computer Engineering"  -> BookTopic.ComputerEngineering
         "Industrial Engineering" ->  BookTopic.IndustrialEngineering
         "Math"  ->  BookTopic.Math
-        "MechanicalEngineering"  -> BookTopic.MechanicalEngineering
+        "Mechanical Engineering"  -> BookTopic.MechanicalEngineering
         "Network Engineering"  ->  BookTopic.NetworkEngineering
         "Software Engineering" ->  BookTopic.SoftwareEngineering
 

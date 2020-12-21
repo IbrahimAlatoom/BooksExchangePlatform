@@ -67,7 +67,7 @@ class SignUpFragment : Fragment() {
                         db.collection("users").document(auth.currentUser?.uid!!).set(user)
                             .addOnSuccessListener { // If sign up happens successfully move to choose topics fragment
                                 navController.navigate(SignUpFragmentDirections.
-                                actionSignUpFragmentToTopicFragment()) }
+                                 actionSignUpFragmentToHomeFragment()) }
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("sign up", "createUserWithEmail:success")
                         }

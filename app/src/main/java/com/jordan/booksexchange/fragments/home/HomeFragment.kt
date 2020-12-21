@@ -49,14 +49,14 @@ class HomeFragment : Fragment() {
 
 
         HandelBigItemRv()
-        HandelSmallItemRv()
+//        HandelSmallItemRv()
         MoveToNotificationFragment()
 
     }
     private fun HandelBigItemRv(){
         bigItemAdapter = GroupAdapter()
         big_item_rv.adapter = bigItemAdapter
-        big_item_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL
+        big_item_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL
             ,false)
         homeViewModel.books.observe(viewLifecycleOwner,{
             bigItemAdapter.clear()
@@ -70,18 +70,18 @@ class HomeFragment : Fragment() {
 
 
     }
-    private fun HandelSmallItemRv(){
-
-
-        smallItemAdapter = GroupAdapter()
-
-        for (bookTopic in BookTopic.values())
-            smallItemAdapter.add(SmallItem(bookTopic))
-
-        small_item_rv.adapter = smallItemAdapter
-        small_item_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL
-            ,false)
-    }
+//    private fun HandelSmallItemRv(){
+//
+//
+//        smallItemAdapter = GroupAdapter()
+//
+//        for (bookTopic in BookTopic.values())
+//            smallItemAdapter.add(SmallItem(bookTopic))
+//
+//        small_item_rv.adapter = smallItemAdapter
+//        small_item_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL
+//            ,false)
+//    }
 
     fun openDetailsFragment(postId:String){
         val navController = findNavController()
