@@ -115,5 +115,5 @@
         android:id="@+id/notificationFragment"
         android:name="com.jordan.booksexchange.fragments.notification.notificationFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_request" />
 </navigation>

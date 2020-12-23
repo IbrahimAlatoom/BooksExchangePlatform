@@ -21,6 +21,7 @@ import java.util.EnumSet.of
 
 class PostDetailsFragment : Fragment() {
     private lateinit var postDetailsViewModel : PostDetailsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
