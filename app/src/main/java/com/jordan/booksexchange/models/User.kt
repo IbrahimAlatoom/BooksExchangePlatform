@@ -36,7 +36,8 @@ enum class BookTopic() {
 
 
 data class User(val Id : String, val name: String , val email :String , val phoneNumber: String ,
-                val topics:List<BookTopic>) {
-    constructor():this("","","","", mutableListOf<BookTopic>())
+                val topics:List<BookTopic> , val requests:MutableList<Request> = mutableListOf()) {
+    constructor():this("","","","", mutableListOf<BookTopic>()
+        , mutableListOf())
 }
 
