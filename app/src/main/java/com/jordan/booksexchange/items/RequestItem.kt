@@ -11,8 +11,7 @@ import kotlinx.android.synthetic.main.request_item.view.*
 
 class RequestItem(val requesters :Request) :Item<GroupieViewHolder>() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-        viewHolder.itemView.request_item_user_name.text = requesters.userId
-        viewHolder.itemView.request_item_book_name.text = requesters.postId
+        viewHolder.itemView.request_item_book_name.text = requesters.bookName
     }
 
     override fun getLayout(): Int {

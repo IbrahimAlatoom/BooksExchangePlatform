@@ -15,6 +15,7 @@ import com.jordan.booksexchange.R
 import com.jordan.booksexchange.fragments.home.HomeViewModel
 import com.jordan.booksexchange.models.Book
 import com.jordan.booksexchange.models.Request
+import com.jordan.booksexchange.models.User
 import kotlinx.android.synthetic.main.fragment_post_details.*
 import java.util.EnumSet.of
 
@@ -38,8 +39,11 @@ class PostDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         postDetailsViewModel = ViewModelProviders.of(this).get(PostDetailsViewModel::class.java)
         var postId = PostDetailsFragmentArgs.fromBundle(requireArguments()).postId
+        val bookName = PostDetailsFragmentArgs.fromBundle(requireArguments()).bookName
         Log.i("PostD", postId)
         postDetailsViewModel.setPostId(postId)
+        postDetailsViewModel.bookName = bookName
+
         postDetailsViewModel.postDetails.observe(viewLifecycleOwner) {
 
             if (it != null) {

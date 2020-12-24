@@ -62,8 +62,8 @@ class HomeFragment : Fragment() {
             bigItemAdapter.clear()
             if(it != null ){
             for (book in it)
-                bigItemAdapter.add(BigItem(book) { postId ->
-                    openDetailsFragment(postId)
+                bigItemAdapter.add(BigItem(book) { postId, bookName ->
+                    openDetailsFragment(postId, bookName)
                 })
             }
         })
@@ -83,9 +83,9 @@ class HomeFragment : Fragment() {
 //            ,false)
 //    }
 
-    fun openDetailsFragment(postId:String){
+    fun openDetailsFragment(postId:String, bookName: String){
         val navController = findNavController()
-        navController.navigate(HomeFragmentDirections.actionHomeFragmentToPostDetailsFragment(postId))
+        navController.navigate(HomeFragmentDirections.actionHomeFragmentToPostDetailsFragment(postId, bookName))
     }
     fun MoveToNotificationFragment() {
 

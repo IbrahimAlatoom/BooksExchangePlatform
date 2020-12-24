@@ -6,7 +6,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.big_item.view.*
 
-class BigItem(private val book: Book , val openDetailsFragment :(String) -> Unit): Item<GroupieViewHolder>() {
+class BigItem(private val book: Book , val openDetailsFragment :(String, String) -> Unit): Item<GroupieViewHolder>() {
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.big_item_uni_name.text = book.university.toString()
@@ -14,7 +14,7 @@ class BigItem(private val book: Book , val openDetailsFragment :(String) -> Unit
         viewHolder.itemView.big_item_description_and_name.text = book.description
         viewHolder.itemView.big_item_book_name.text= book.name
         viewHolder.itemView.setOnClickListener(){
-            openDetailsFragment.invoke(book.bookId)
+            openDetailsFragment.invoke(book.bookId, book.name)
         }
     }
 

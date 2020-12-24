@@ -13,24 +13,24 @@ class RequestViewModel :ViewModel() {
     var myRequests = MutableLiveData<List<Request>>()
     var inboxRequests = MutableLiveData<List<Request>>()
     init{
-
+        requestsDividor()
     }
 
 
 
 
     fun requestsDividor(){
-        var user = Firebase.auth.uid
+        var userId = Firebase.auth.uid
         var db = Firebase.firestore
-        db.collection("users").document(user.toString()).get().addOnSuccessListener {
-            var request =it.toObject(User ::class.java)
+        db.collection("users").document(userId!!).get().addOnSuccessListener {
+            var user =it.toObject(User ::class.java)
 
             var myRequests : MutableList<Request> = mutableListOf()
             var inboxRequests : MutableList<Request> = mutableListOf()
 
-            for(i :Request in request?.requests!!)
-            {
-                if(user != i.userId)
+            for(i :Request in user?.requests!!)
+            {   Log.i("inssss",i.toString())
+                if(userId != i.userId)
                 {
                     inboxRequests.add(i)
                 }
@@ -43,5 +43,7 @@ class RequestViewModel :ViewModel() {
             Log.i("inssss",myRequests.toString())
         }
     }
+
+
 
 }

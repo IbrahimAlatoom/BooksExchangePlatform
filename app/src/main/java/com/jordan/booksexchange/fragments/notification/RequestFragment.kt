@@ -45,7 +45,7 @@ class notificationFragment : Fragment() {
         requests_rv.adapter = requestItemAdapter
         requests_rv.layoutManager=LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL
             ,false)
-        requestViewModel.myRequests.observe(viewLifecycleOwner){
+        requestViewModel.inboxRequests.observe(viewLifecycleOwner){
 //            requestItemAdapter.clear()
             if (it !=null ){
                 for(request in it)

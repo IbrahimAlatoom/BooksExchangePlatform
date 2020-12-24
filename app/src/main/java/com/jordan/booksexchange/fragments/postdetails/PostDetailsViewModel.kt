@@ -1,6 +1,6 @@
 package com.jordan.booksexchange.fragments.postdetails
 
-import android.util.Log
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.ktx.auth
@@ -19,6 +19,7 @@ class PostDetailsViewModel()  : ViewModel() {
 
     }
     private var postId = ""
+     var bookName = ""
 
     fun setPostId(Id :String){
         postId = Id
@@ -41,11 +42,11 @@ class PostDetailsViewModel()  : ViewModel() {
             .get().addOnSuccessListener {
                 val user = it.toObject(User ::class.java)
                 if (user != null) {
+                    request.bookName = this.bookName
                     user.requests.add(request)
                     db.collection("users").document(userId!!).update("requests",
                         user.requests)
                 }
             }
         }
-
     }

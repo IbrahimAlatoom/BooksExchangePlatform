@@ -15,6 +15,7 @@ import com.jordan.booksexchange.R
 import com.jordan.booksexchange.models.Book
 import com.jordan.booksexchange.models.StringToBookTopic
 import com.jordan.booksexchange.models.University
+import com.jordan.booksexchange.models.User
 import kotlinx.android.synthetic.main.fragment_post.*
 
 
@@ -59,10 +60,8 @@ class PostFragment : Fragment() {
                 bookName, userId, postId ,StringToUni(uniName),
                 StringToBookTopic(schName), detail, ""
             )
-
             ref.set(post).addOnSuccessListener {
                 navController.navigate(PostFragmentDirections.actionPostFragmentToHomeFragment())
-
                 Toast.makeText(
                     requireContext(),
                     "You Have Added Post successfully",
@@ -70,11 +69,6 @@ class PostFragment : Fragment() {
                 )
                     .show()
             }
-
-
-
-
-
         }
     }
 
