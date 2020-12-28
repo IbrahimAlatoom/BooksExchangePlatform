@@ -5,24 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
-import com.jordan.booksexchange.fragments.postdetails.PostDetailsViewModel
+import com.jordan.booksexchange.items.InboxRequestItem
 import com.jordan.booksexchange.items.RequestItem
-import com.jordan.booksexchange.models.User
-import com.xwray.groupie.Group
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_request.*
 
 class notificationFragment : Fragment() {
     private lateinit var requestViewModel: RequestViewModel
+    private lateinit var inboxRequestItemAdapter: GroupAdapter<GroupieViewHolder>
     private lateinit var requestItemAdapter: GroupAdapter<GroupieViewHolder>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +37,37 @@ class notificationFragment : Fragment() {
 
         requestViewModel = ViewModelProviders.of(this).get(RequestViewModel::class.java)
 
+        inboxRequestItemAdapter = GroupAdapter()
         requestItemAdapter = GroupAdapter()
+
+
+        inbox_requests_rv.adapter = inboxRequestItemAdapter
+        inbox_requests_rv.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.VERTICAL, false
+        )
+
         requests_rv.adapter = requestItemAdapter
         requests_rv.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
 
+        // Get inbox requests
         requestViewModel.inboxRequests.observe(viewLifecycleOwner) {
+            if (it != null) {
+                inboxRequestItemAdapter.clear()
+                for (request in it) {
+                    inboxRequestItemAdapter.add(
+                        InboxRequestItem(
+                            request,
+                            deleteAction = requestViewModel::removeRequest
+                        )
+                    )
+                }
+            }
+        }
+
+        // Get my requests
+        requestViewModel.myRequests.observe(viewLifecycleOwner, {
             if (it != null) {
                 requestItemAdapter.clear()
                 for (request in it) {
@@ -61,7 +79,7 @@ class notificationFragment : Fragment() {
                     )
                 }
             }
-        }
+        })
     }
 }
 
