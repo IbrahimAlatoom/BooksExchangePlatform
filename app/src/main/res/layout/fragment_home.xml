@@ -10,34 +10,30 @@
 
     <ImageView
         android:id="@+id/noti_image_view"
-        android:layout_width="30dp"
-        android:layout_height="0dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/user_name_id_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_notifications_24" />
+        app:srcCompat="@drawable/ic_baseline_notifications_24"
+        app:tint="@color/primaryColor" />
 
     <TextView
         android:id="@+id/user_name_id_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
+        tools:alpha="1"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="monospace"
-        android:text="Hello,Moh"
+        tools:text="Hello, Ahmad"
         android:textColor="@color/primaryTextColor"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/welcom_back_massege"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Welcome back !"
-        android:textColor="@color/cardview_dark_background"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/user_name_id_text"
-        app:layout_constraintTop_toBottomOf="@+id/user_name_id_text" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/big_item_rv"
@@ -48,6 +44,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcom_back_massege" />
+        app:layout_constraintTop_toBottomOf="@+id/user_name_id_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_request.*
 
 class notificationFragment : Fragment() {
     private lateinit var requestViewModel: RequestViewModel
-    private lateinit var requestItemAdapter : GroupAdapter<GroupieViewHolder>
+    private lateinit var requestItemAdapter: GroupAdapter<GroupieViewHolder>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,21 +40,28 @@ class notificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         requestViewModel = ViewModelProviders.of(this).get(RequestViewModel::class.java)
+
         requestItemAdapter = GroupAdapter()
         requests_rv.adapter = requestItemAdapter
-        requests_rv.layoutManager=LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL
-            ,false)
-        requestViewModel.inboxRequests.observe(viewLifecycleOwner){
-//            requestItemAdapter.clear()
-            if (it !=null ){
-                for(request in it)
-                {
-                    requestItemAdapter.add(RequestItem(request))
+        requests_rv.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.VERTICAL, false
+        )
+
+        requestViewModel.inboxRequests.observe(viewLifecycleOwner) {
+            if (it != null) {
+                requestItemAdapter.clear()
+                for (request in it) {
+                    requestItemAdapter.add(
+                        RequestItem(
+                            request,
+                            deleteAction = requestViewModel::removeRequest
+                        )
+                    )
                 }
             }
         }
-
-
     }
 }
+

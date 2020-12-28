@@ -1,96 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.post.PostFragment">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.post.PostFragment">
 
 
+        <TextView
+            android:id="@+id/post_title_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Do You Have Book To Post ?"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/post_title_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Do You Have Book To Post ?"
-        android:textColor="@color/primaryDarkColor"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/post_book_name"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:hint="Book Name"
+            android:inputType="textPersonName"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/post_title_txt"
+            app:layout_constraintTop_toBottomOf="@+id/post_title_txt" />
 
-    <EditText
-        android:id="@+id/post_book_name"
-        android:layout_width="380dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
-        android:ems="10"
-        android:hint="Book Name"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/post_title_txt"
-        app:layout_constraintTop_toBottomOf="@+id/post_title_txt" />
+        <Spinner
+            android:id="@+id/post_uni_spinner"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:entries="@array/uniSpinnerItems"
+            app:layout_constraintEnd_toEndOf="@+id/post_book_name"
+            app:layout_constraintStart_toStartOf="@+id/post_book_name"
+            app:layout_constraintTop_toBottomOf="@+id/post_book_name" />
 
-    <Spinner
-        android:id="@+id/post_uni_spinner"
-        android:layout_width="380dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
-        android:entries="@array/uniSpinnerItems"
-        app:layout_constraintStart_toStartOf="@+id/post_book_name"
-        app:layout_constraintTop_toBottomOf="@+id/post_book_name" />
+        <Spinner
+            android:id="@+id/post_schoole_spinner"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:entries="@array/SchSpinnerItem"
+            app:layout_constraintEnd_toEndOf="@+id/post_uni_spinner"
+            app:layout_constraintStart_toStartOf="@+id/post_uni_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/post_uni_spinner" />
 
-    <Spinner
-        android:entries="@array/SchSpinnerItem"
-        android:id="@+id/post_schoole_spinner"
-        android:layout_width="380dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/post_uni_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/post_uni_spinner" />
+        <EditText
+            android:id="@+id/post_details"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="Another Deatails ...."
+            android:inputType="textPersonName"
+            android:maxLines="8"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/post_schoole_spinner"
+            app:layout_constraintStart_toStartOf="@+id/post_schoole_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/post_schoole_spinner" />
 
-    <EditText
-        android:id="@+id/post_details"
-        android:layout_width="380dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
-        android:ems="10"
-        android:gravity="top"
-        android:hint="Another Deatails ...."
-        android:inputType="textPersonName"
-        android:maxLines="8"
-        app:layout_constraintStart_toStartOf="@+id/post_schoole_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/post_schoole_spinner" />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/post_upload_image"
+            android:layout_width="180dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bwbook"
+            app:layout_constraintStart_toStartOf="@+id/post_details"
+            app:layout_constraintTop_toBottomOf="@+id/post_details"
+            app:riv_corner_radius="8dp" />
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/post_upload_image"
-        android:layout_width="180dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bwbook"
-        app:layout_constraintStart_toStartOf="@+id/post_details"
-        app:layout_constraintTop_toBottomOf="@+id/post_details"
-        app:riv_corner_radius="8dp" />
+        <Button
+            android:id="@+id/post_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edit_text_background"
+            android:text="Post"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_upload_image" />
 
-    <Button
-        android:id="@+id/post_button"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/edit_text_background"
-        android:text="Post"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_upload_image" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jordan.booksexchange.R
 import com.jordan.booksexchange.items.PostItem
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 
 
 class SearchFragment : Fragment() {
-    private lateinit var postItemAdapter : GroupAdapter<GroupieViewHolder>
+    private lateinit var postItemAdapter: GroupAdapter<GroupieViewHolder>
     private lateinit var searchViewModel: SearchViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +26,8 @@ class SearchFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false)
 
@@ -44,28 +46,37 @@ class SearchFragment : Fragment() {
             searchViewModel.getPosts(university, StringToBookTopic(school).name)
         }
 
-        searchViewModel.postList.observe(viewLifecycleOwner, {
-            bookList ->
-            if(!bookList.isNullOrEmpty()) {
+        searchViewModel.postList.observe(viewLifecycleOwner, { bookList ->
+            if (!bookList.isNullOrEmpty()) {
                 postItemAdapter.clear()
                 for (book in bookList) {
-                    postItemAdapter.add(PostItem(book.name))
+                    postItemAdapter.add(PostItem(book, ::navigateToDetails))
                 }
-            }else{
+            } else {
                 // Hide the rv
                 // show message
                 postItemAdapter.clear()
             }
         })
-
-
     }
 
-    private fun HanedelSearchRv(){
+    private fun HanedelSearchRv() {
 
         postItemAdapter = GroupAdapter()
         search_rv.adapter = postItemAdapter
-        search_rv.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL
-            ,false)
+        search_rv.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.VERTICAL, false
+        )
+    }
+
+    private fun navigateToDetails(postId: String, bookName: String) {
+        val navController = findNavController()
+        navController.navigate(
+            SearchFragmentDirections.actionSearchFragmentToPostDetailsFragment(
+                postId, bookName
+            )
+        )
+
+
     }
 }

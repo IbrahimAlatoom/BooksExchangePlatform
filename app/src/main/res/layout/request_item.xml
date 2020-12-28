@@ -10,6 +10,7 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:scaleType="center"
         android:src="@drawable/f_image"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="You Have Got request On"
+        android:textColor="@color/primaryTextColor"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/request_item_image"
         app:layout_constraintTop_toTopOf="@+id/request_item_image"
@@ -41,21 +42,22 @@
 
     <ImageView
         android:id="@+id/request_item_accept"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/request_item_book_name"
-        app:layout_constraintStart_toEndOf="@+id/request_item_book_name"
-        app:layout_constraintTop_toTopOf="@+id/request_item_book_name"
-        app:srcCompat="@drawable/ic_baseline_check_24" />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/request_item_reject"
+        app:layout_constraintTop_toBottomOf="@+id/request_item_book_name"
+        app:srcCompat="@drawable/ic_baseline_check_24"
+        app:tint="@color/primaryLightColor" />
 
     <ImageView
         android:id="@+id/request_item_reject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/request_item_accept"
-        app:layout_constraintStart_toEndOf="@+id/request_item_accept"
+        app:layout_constraintEnd_toEndOf="@+id/request_item_book_name"
         app:layout_constraintTop_toTopOf="@+id/request_item_accept"
-        app:srcCompat="@drawable/ic_baseline_clear_24" />
+        app:srcCompat="@drawable/ic_baseline_clear_24"
+        app:tint="#F00" />
 </androidx.constraintlayout.widget.ConstraintLayout>

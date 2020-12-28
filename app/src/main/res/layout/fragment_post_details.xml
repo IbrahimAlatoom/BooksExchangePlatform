@@ -11,59 +11,83 @@
         android:id="@+id/post_details_bimage"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         android:src="@drawable/bwbook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:riv_corner_radius_bottom_left="16dp" />
+        app:riv_corner_radius_bottom_left="32dp" />
 
     <TextView
         android:id="@+id/post_details_bname"
-        android:layout_width="98dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="book"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_details_bimage" />
+        app:layout_constraintTop_toBottomOf="@+id/post_details_bimage"
+        tools:text="Book title" />
 
     <TextView
         android:id="@+id/post_details_bttopic"
         android:layout_width="179dp"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="mid"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/post_details_bname"
-        app:layout_constraintTop_toBottomOf="@+id/post_details_bname" />
+        app:layout_constraintTop_toBottomOf="@+id/post_details_bname"
+        tools:text="Computer" />
 
     <TextView
         android:id="@+id/post_details_bdetails"
-        android:layout_width="378dp"
-        android:layout_height="75dp"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
-        android:text="d"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/post_details_bttopic"
-        app:layout_constraintTop_toBottomOf="@+id/post_details_bttopic" />
+        app:layout_constraintTop_toBottomOf="@+id/post_details_bttopic"
+        tools:text="This is a simple text" />
 
     <TextView
         android:id="@+id/post_details_buni"
-        android:layout_width="179dp"
-        android:layout_height="25dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/post_details_bttopic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/post_details_bttopic"
-        app:layout_constraintTop_toTopOf="@+id/post_details_bttopic" />
+        app:layout_constraintTop_toTopOf="@+id/post_details_bttopic"
+        tools:text="Math" />
 
     <Button
         android:id="@+id/post_details_request_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:clickable="false"
-        android:text="Request"
+        android:text="Request This Book"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:alpha="0"
+        tools:alpha="1"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/primaryLightColor"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/post_details_bdetails" />
 </androidx.constraintlayout.widget.ConstraintLayout>
