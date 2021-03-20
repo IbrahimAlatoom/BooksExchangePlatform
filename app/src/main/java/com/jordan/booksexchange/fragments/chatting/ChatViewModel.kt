@@ -18,14 +18,14 @@ class ChatViewModel : ViewModel() {
     val chatUsers: LiveData<List<ChatUser>>
         get() = _chats
 
-    fun sendChat(chat: Chat, sender: String, target: String) {
-        FirebaseFirestore.getInstance().collection("chats/$sender/chats/$target/messages")
-            .add(chat).addOnSuccessListener {
-                Log.i("ChatViewModel", "Chat send successful!")
-
-                Firebase.firestore.collection("chats/$sender/users")
-                    .document(chat.targetId).set(ChatUser(chat.targetId))
-            }
+    companion object {
+        fun sendChat(chat: Chat, sender: String, target: String) {
+            FirebaseFirestore.getInstance().collection("chats/$sender/chats/$target/messages")
+                .add(chat).addOnSuccessListener {
+                    Firebase.firestore.collection("chats/$sender/users")
+                        .document(target).set(ChatUser(target))
+                }
+        }
     }
 
     // Get all users the has a chat with the current logged in user

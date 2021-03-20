@@ -7,4 +7,6 @@ data class Chat(
     var timestamp: Long,
     var senderId: String,
     var targetId: String
-)
+) {
+    constructor():this("",0,"","")
+}

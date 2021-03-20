@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.size
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
@@ -40,15 +42,20 @@ class ChatFragment : Fragment(), OnChatItemClickListener {
         chatItemAdapter = GroupAdapter()
         chat_rv.adapter = chatItemAdapter
 
+        chat_rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,
+        false)
 
         // Get the chat View Model
         chatViewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
         chatViewModel.getAllUsers()
 
         chatViewModel.chatUsers.observe(viewLifecycleOwner){
+            chatItemAdapter.clear()
             for(user in it){
                 chatItemAdapter.add(ChatItem(user.userId,this))
             }
+
+            (chat_rv.layoutManager as LinearLayoutManager).scrollToPosition(chatItemAdapter.itemCount - 1)
         }
 
 

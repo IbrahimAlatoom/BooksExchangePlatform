@@ -1,6 +1,9 @@
 package com.jordan.booksexchange.items
 
 import com.jordan.booksexchange.R
+import com.jordan.booksexchange.fragments.chatting.ChatViewModel
+import com.jordan.booksexchange.fragments.chatting.ChatViewModel.Companion.sendChat
+import com.jordan.booksexchange.models.Chat
 import com.jordan.booksexchange.models.Request
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -12,6 +15,14 @@ class InboxRequestItem(val request :Request, val deleteAction: (Request)->Unit) 
         viewHolder.itemView.request_item_book_name.text = request.bookName
         viewHolder.itemView.request_item_reject.setOnClickListener {
             deleteAction(request)
+        }
+
+        viewHolder.itemView.request_item_accept.setOnClickListener {
+            sendChat(Chat("Hello, Request Accepted", System.currentTimeMillis(),
+                request.publisherId!!, request.userId!!), request.publisherId, request.userId)
+
+            sendChat(Chat("Hello, Request Accepted", System.currentTimeMillis(),
+                request.publisherId, request.userId), request.userId, request.publisherId)
         }
     }
 
