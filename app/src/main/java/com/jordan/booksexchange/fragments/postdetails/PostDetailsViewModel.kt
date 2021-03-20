@@ -36,9 +36,9 @@ class PostDetailsViewModel()  : ViewModel() {
             }
     }
 
-    fun requestHandler(userId :String,request :Request){
+    fun requestHandler(userId :String,request :Request) {
         val db = Firebase.firestore
-        val oldRequests = db.collection("users").document(userId!!)
+        val oldRequests = db.collection("users").document(userId)
             .get().addOnSuccessListener {
                 val user = it.toObject(User ::class.java)
                 if (user != null) {

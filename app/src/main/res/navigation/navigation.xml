@@ -62,6 +62,9 @@
         <action
             android:id="@+id/action_homeFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -77,7 +80,7 @@
             android:id="@+id/action_welcomeFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -113,10 +116,28 @@
         android:id="@+id/chatFragment"
         android:name="com.jordan.booksexchange.fragments.chatting.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.jordan.booksexchange.fragments.notification.notificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_request" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/startFragment"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.jordan.booksexchange.fragments.messages.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" >
+        <argument
+            android:name="userId"
+            app:argType="string" />
+    </fragment>
 </navigation>

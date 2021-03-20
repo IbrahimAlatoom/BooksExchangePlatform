@@ -1,6 +1,5 @@
 package com.jordan.booksexchange.fragments.notification
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.ktx.auth
@@ -50,10 +49,22 @@ class RequestViewModel : ViewModel() {
                 val user = it.toObject(User::class.java)
                 if (user != null) {
                     user.requests.remove(request)
-                    db.collection("users").document(userId!!).update(
+                    db.collection("users").document(userId).update(
                         "requests",
                         user.requests
-                    )
+                    ).addOnSuccessListener {
+                        db.collection("users").document(request.publisherId!!)
+                            .get().addOnSuccessListener {
+                                val otherUser = it.toObject(User::class.java)
+                                if (otherUser != null) {
+                                    otherUser.requests.remove(request)
+                                    db.collection("users").document(request.publisherId).update(
+                                        "requests",
+                                        otherUser.requests
+                                    )
+                                }
+                            }
+                    }
                 }
             }
     }

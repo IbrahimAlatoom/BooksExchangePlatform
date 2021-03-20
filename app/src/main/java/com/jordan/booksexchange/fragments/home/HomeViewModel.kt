@@ -15,8 +15,10 @@ class HomeViewModel : ViewModel() {
     val currentUser = MutableLiveData<User>()
     val books = MutableLiveData<List<Book>>()
     init {
-        getCurrentUser()
-        getAllBooks()
+        if(Firebase.auth.currentUser != null) {
+            getCurrentUser()
+            getAllBooks()
+        }
     }
     private fun getCurrentUser(){
         val userId = Firebase.auth.uid

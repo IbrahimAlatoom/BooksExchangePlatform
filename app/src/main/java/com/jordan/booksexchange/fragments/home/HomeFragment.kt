@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
@@ -41,6 +42,13 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if(Firebase.auth.currentUser == null) {
+            home_signin_tip.visibility = View.VISIBLE
+            home_signin_tip.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSignInFragment())
+            }
+        }
 
         // Create home view model
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)

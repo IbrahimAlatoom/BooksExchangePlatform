@@ -2,6 +2,7 @@
     <string name="app_name">Books Exchange</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="you_need_to_sign_in_to_access_the_page">You need to sign in to access the page</string>
 
     <string-array name="uniSpinnerItems">
         <item>Just</item>
