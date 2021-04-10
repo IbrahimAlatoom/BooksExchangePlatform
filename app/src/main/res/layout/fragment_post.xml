@@ -35,6 +35,7 @@
             android:inputType="textPersonName"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
+            android:textColor="@color/secondaryTextColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/post_title_txt"
             app:layout_constraintTop_toBottomOf="@+id/post_title_txt" />
@@ -62,7 +63,7 @@
         <EditText
             android:id="@+id/post_details"
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="100dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/edit_text_background"
             android:ems="10"
@@ -72,17 +73,19 @@
             android:maxLines="8"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
+            android:textColor="@color/secondaryTextColor"
             app:layout_constraintEnd_toEndOf="@+id/post_schoole_spinner"
             app:layout_constraintStart_toStartOf="@+id/post_schoole_spinner"
             app:layout_constraintTop_toBottomOf="@+id/post_schoole_spinner" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/post_upload_image"
-            android:layout_width="180dp"
-            android:layout_height="160dp"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
             android:layout_marginTop="16dp"
+            android:background="@color/primaryColor"
             android:scaleType="centerCrop"
-            android:src="@drawable/bwbook"
+            app:layout_constraintEnd_toEndOf="@+id/post_details"
             app:layout_constraintStart_toStartOf="@+id/post_details"
             app:layout_constraintTop_toBottomOf="@+id/post_details"
             app:riv_corner_radius="8dp" />
@@ -95,12 +98,37 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/edit_text_background"
-            android:text="Post"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="@color/primaryColor"
+            android:text="@string/post"
+            android:textColor="@color/secondaryTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/post_upload_image" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/post_upload_image"
+            app:layout_constraintEnd_toEndOf="@+id/post_upload_image"
+            app:layout_constraintStart_toStartOf="@+id/post_upload_image"
+            app:layout_constraintTop_toTopOf="@+id/post_upload_image"
+            app:srcCompat="@drawable/ic_baseline_add_circle_24"
+            app:tint="@color/secondaryTextColor" />
+
+        <ProgressBar
+            android:visibility="invisible"
+            tools:visibility="visible"
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

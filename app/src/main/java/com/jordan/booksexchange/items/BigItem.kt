@@ -1,7 +1,9 @@
 package com.jordan.booksexchange.items
 
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
@@ -18,6 +20,7 @@ class BigItem(private val book: Book , val openDetailsFragment :(String, String)
         viewHolder.itemView.big_item_sch_name.text = book.topic.toString()
         viewHolder.itemView.big_item_description_and_name.text = book.description
         viewHolder.itemView.big_item_book_name.text= book.name
+//        viewHolder.itemView.bif_item_book_image.setImageResource()
 
         viewHolder.itemView.setOnClickListener(){
             openDetailsFragment.invoke(book.bookId, book.name)
@@ -26,6 +29,12 @@ class BigItem(private val book: Book , val openDetailsFragment :(String, String)
         viewHolder.itemView.big_item_request_button.setOnClickListener {
             openDetailsFragment.invoke(book.bookId, book.name)
         }
+        Log.i("BigItem", "Url: ${book.ImageUrl}")
+        Glide
+            .with(viewHolder.itemView.context)
+            .load(book.ImageUrl)
+            .into(viewHolder.itemView.bif_item_book_image)
+
     }
 
     override fun getLayout(): Int {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,61 +7,105 @@
 
     <ImageView
         android:id="@+id/app_logo"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/button_bg"
+        android:alpha="0.5"
+        app:tint="@color/primaryTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/design_image"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.7"
+        app:layout_constraintBottom_toBottomOf="@+id/app_logo"
+        app:layout_constraintEnd_toEndOf="@+id/welcome_text"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/welcome_text" />
 
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:fontFamily="casual"
-        android:text="Welcome"
+        android:layout_height="100dp"
+        android:padding="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:alpha="0.7"
+        android:gravity="center"
+        android:text="@string/welcome"
         android:textAlignment="center"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/app_logo"
-        app:layout_constraintStart_toStartOf="@+id/app_logo"
-        app:layout_constraintTop_toBottomOf="@+id/app_logo" />
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/primaryTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/design_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119" />
 
     <TextView
         android:id="@+id/sign_in_up_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
         android:text="Don't have account?"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/welcome_text" />
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/design_image"
+        app:layout_constraintStart_toStartOf="@+id/design_image"
+        app:layout_constraintTop_toTopOf="@+id/design_image"
+        app:layout_constraintVertical_bias="0.40" />
 
     <TextView
         android:id="@+id/sign_up_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Sign Up now"
         android:textColor="@color/primaryColor"
-        android:textSize="18sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/sign_in_up_text"
+        app:layout_constraintEnd_toEndOf="@+id/design_image"
         app:layout_constraintStart_toEndOf="@+id/sign_in_up_text"
-        app:layout_constraintTop_toTopOf="@+id/sign_in_up_text" />
+        app:layout_constraintTop_toTopOf="@+id/sign_in_up_text"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/move_to_sign_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:fontFamily="sans-serif-smallcaps"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_margin="70dp"
+        android:layout_marginTop="32dp"
+        android:alpha="0.9"
+        android:gravity="center"
         android:text="Sign In"
-        android:textColor="@color/primaryDarkColor"
-        android:textSize="24sp"
+        android:backgroundTint="@color/primaryColor"
+        android:background="@drawable/button_bg"
+        android:textAlignment="center"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="28sp"
+        android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="@+id/welcome_text"
         app:layout_constraintStart_toStartOf="@+id/welcome_text"
         app:layout_constraintTop_toBottomOf="@+id/welcome_text" />

@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Books Exchange</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="you_need_to_sign_in_to_access_the_page">You need to sign in to access the page</string>
+    <string name="welcome">Welcome To Books Exchange App</string>
+    <string name="sign_in">Sign In</string>
+    <string name="post">Post</string>
 
     <string-array name="uniSpinnerItems">
         <item>Just</item>

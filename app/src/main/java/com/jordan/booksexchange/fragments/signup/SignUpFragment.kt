@@ -41,7 +41,6 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
         handelSignUp()
-
     }
 
     // Function to handel sign up with null information
@@ -57,7 +56,10 @@ class SignUpFragment : Fragment() {
                     .show()
                 return@setOnClickListener
             }
+
             sign_up_button.isClickable = false
+            progressBar.visibility = View.VISIBLE
+
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
@@ -66,14 +68,15 @@ class SignUpFragment : Fragment() {
                         val db = Firebase.firestore
                         db.collection("users").document(auth.currentUser?.uid!!).set(user)
                             .addOnSuccessListener { // If sign up happens successfully move to choose topics fragment
+                                progressBar.visibility = View.INVISIBLE
                                 navController.navigate(SignUpFragmentDirections.
                                  actionSignUpFragmentToHomeFragment()) }
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d("sign up", "createUserWithEmail:success")
                         }
                     else {
                         // If sign in fails, display a message to the user.
-                        Log.w("sign up", "createUserWithEmail:failure", task.exception)
+                        progressBar.visibility = View.INVISIBLE
+                        sign_up_button.isClickable = true
+                        Toast.makeText(requireContext(), "SignUp Failed", Toast.LENGTH_SHORT).show()
                     }
                 }
 

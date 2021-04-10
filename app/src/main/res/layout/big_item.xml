@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="@+id/big_item_background"
         app:layout_constraintTop_toBottomOf="@+id/big_item_description_and_name"
         app:riv_mutate_background="true"
-        android:src="@drawable/bwbook" />
+        tools:src="@drawable/bwbook" />
 
     <Button
         android:id="@+id/big_item_request_button"

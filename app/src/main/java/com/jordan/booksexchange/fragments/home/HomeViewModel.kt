@@ -30,11 +30,7 @@ class HomeViewModel : ViewModel() {
     private fun getAllBooks(){
         val db = Firebase.firestore
         db.collection("Posts").get().addOnSuccessListener {
-            books.value = it.toObjects(Book ::class.java)
+            books.value = it.toObjects(Book::class.java)
         }
-
     }
-
-
-
 }

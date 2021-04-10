@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/startFragment"
         android:name="com.jordan.booksexchange.fragments.getstarted.StartFragment"
-        android:label="StartFragment" >
+        android:label="Book's Exchange" >
         <action
             android:id="@+id/action_startFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.jordan.booksexchange.fragments.signup.SignUpFragment"
-        android:label="fragment_sign_up"
+        android:label="Book's Exchange"
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_topicFragment"
@@ -43,7 +43,7 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.jordan.booksexchange.fragments.signin.SignInFragment"
-        android:label="fragment_sign_in"
+        android:label="Book's Exchange"
         tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_homeFragment"
@@ -54,7 +54,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.jordan.booksexchange.fragments.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_postDetailsFragment"
@@ -85,7 +85,7 @@
     <fragment
         android:id="@+id/postFragment"
         android:name="com.jordan.booksexchange.fragments.post.PostFragment"
-        android:label="fragment_post"
+        android:label="Submit A Book"
         tools:layout="@layout/fragment_post" >
         <action
             android:id="@+id/action_postFragment_to_homeFragment"
@@ -94,7 +94,7 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.jordan.booksexchange.fragments.search.SearchFragment"
-        android:label="fragment_search"
+        android:label="Search"
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_postDetailsFragment"
@@ -103,7 +103,7 @@
     <fragment
         android:id="@+id/postDetailsFragment"
         android:name="com.jordan.booksexchange.fragments.postdetails.PostDetailsFragment"
-        android:label="fragment_post_details"
+        android:label="Book Details"
         tools:layout="@layout/fragment_post_details" >
         <argument
             android:name="postId"
@@ -115,7 +115,7 @@
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.jordan.booksexchange.fragments.chatting.ChatFragment"
-        android:label="fragment_chat"
+        android:label="Chat"
         tools:layout="@layout/fragment_chat" >
         <action
             android:id="@+id/action_chatFragment_to_messagesFragment"
@@ -124,7 +124,7 @@
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.jordan.booksexchange.fragments.notification.notificationFragment"
-        android:label="fragment_notification"
+        android:label="Notifications"
         tools:layout="@layout/fragment_request" />
     <action
         android:id="@+id/action_global_homeFragment"

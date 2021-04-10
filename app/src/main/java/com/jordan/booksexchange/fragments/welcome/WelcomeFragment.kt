@@ -26,7 +26,7 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Firebase.auth.signOut()
+//        Firebase.auth.signOut()
         checkUser()
 
     }

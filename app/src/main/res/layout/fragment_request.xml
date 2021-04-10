@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".fragments.notification.notificationFragment">
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Your inbox"
+            android:text="Inbox"
             android:textColor="@color/primaryTextColor"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Your inbox"
+            android:text="Your Requests"
             android:textColor="@color/primaryTextColor"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@+id/inbox_requests_rv"

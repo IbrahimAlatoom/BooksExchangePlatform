@@ -15,29 +15,27 @@ import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 
-
 class SignInFragment : Fragment() {
+
     private lateinit var navController: NavController
     private lateinit var auth: FirebaseAuth
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
-
     }
 
     override fun onStart() {
         super.onStart()
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle? ): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
-       }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,13 +44,14 @@ class SignInFragment : Fragment() {
         handelSignIn()
 
     }
-    private fun handelSignIn(){
-        sign_in_button.setOnClickListener(){
+
+    private fun handelSignIn() {
+        sign_in_button.setOnClickListener() {
             val email = sign_in_email_plain_text.text.toString()
             val password = sign_in_password_plain_text.text.toString()
 
             // Check if user is signed in (non-null) and update UI accordingly.
-            if (email.isEmpty() || password.isEmpty() ){
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "please fill all fields", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
@@ -60,17 +59,14 @@ class SignInFragment : Fragment() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d("sign in", "signInWithEmail:success")
+                        navController.navigate(SignInFragmentDirections.actionSignInFragmentToHomeFragment())
                     } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w("sign in", "signInWithEmail:failure", task.exception)
-                        Toast.makeText(requireContext(), "Authentication failed.",
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(), "Authentication failed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-                    navController.navigate(SignInFragmentDirections.actionSignInFragmentToHomeFragment())
                 }
-
         }
     }
 }
