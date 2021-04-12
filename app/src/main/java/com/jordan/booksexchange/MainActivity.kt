@@ -44,11 +44,12 @@ class MainActivity : AppCompatActivity() {
             R.id.signInFragment , R.id.startFragment , R.id.signUpFragment
         ).build()
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController,appBarConfiguration)
         bottom_nav.setupWithNavController(navController)
     }
 
     override fun onNavigateUp(): Boolean {
+        val navController = findNavController(R.id.myNavHostFragment)
         return navController.navigateUp() || super.onNavigateUp()
     }
 }

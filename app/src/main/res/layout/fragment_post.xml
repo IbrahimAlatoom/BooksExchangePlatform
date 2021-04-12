@@ -35,7 +35,7 @@
             android:inputType="textPersonName"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:textColor="@color/secondaryTextColor"
+            android:textColor="@color/primaryTextColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/post_title_txt"
             app:layout_constraintTop_toBottomOf="@+id/post_title_txt" />
@@ -73,7 +73,7 @@
             android:maxLines="8"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:textColor="@color/secondaryTextColor"
+            android:textColor="@color/primaryTextColor"
             app:layout_constraintEnd_toEndOf="@+id/post_schoole_spinner"
             app:layout_constraintStart_toStartOf="@+id/post_schoole_spinner"
             app:layout_constraintTop_toBottomOf="@+id/post_schoole_spinner" />

@@ -7,18 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
-import com.jordan.booksexchange.fragments.home.HomeViewModel
-import com.jordan.booksexchange.models.Book
 import com.jordan.booksexchange.models.Request
-import com.jordan.booksexchange.models.User
 import kotlinx.android.synthetic.main.fragment_post_details.*
-import java.util.EnumSet.of
 
 
 class PostDetailsFragment : Fragment() {
@@ -56,6 +51,10 @@ class PostDetailsFragment : Fragment() {
                 post_details_bdetails.text = it.description
                 post_details_bttopic.text = it.topic.toString()
                 post_details_buni.text = it.university.toString()
+                Glide
+                    .with(requireActivity())
+                    .load(it.imageUrl)
+                    .into(post_details_bimage)
 
                 // Check  if the publisherId is the current user id
                 // Hide the request button

@@ -5,6 +5,6 @@ enum class University(){
 }
 
 class Book(val name : String, val publisherId :String? ,val bookId :String, val university : University? ,
-             val topic : BookTopic? , val description : String, val ImageUrl : String){
+             val topic : BookTopic? , val description : String, val imageUrl : String){
     constructor():this("","","",null,null,"","")
 }

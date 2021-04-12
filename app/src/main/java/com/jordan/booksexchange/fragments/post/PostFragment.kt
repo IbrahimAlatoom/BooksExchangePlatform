@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,7 +26,6 @@ import com.jordan.booksexchange.R
 import com.jordan.booksexchange.models.Book
 import com.jordan.booksexchange.models.StringToBookTopic
 import com.jordan.booksexchange.models.University
-import kotlinx.android.synthetic.main.chat_item.*
 import kotlinx.android.synthetic.main.fragment_post.*
 import java.io.ByteArrayOutputStream
 
@@ -166,7 +164,7 @@ class PostFragment : Fragment() {
                     val downloadUri = task.result
                     val post: Book = Book(
                         bookName, userId, postId, StringToUni(uniName),
-                        StringToBookTopic(schName), detail, downloadUri.toString()
+                        StringToBookTopic(schName), detail, imageUrl = downloadUri.toString()
                     )
                     ref.set(post).addOnSuccessListener {
                         progressBar2.visibility = View.INVISIBLE
