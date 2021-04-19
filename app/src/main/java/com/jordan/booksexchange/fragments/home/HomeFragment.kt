@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.notification_item){
             val navController = findNavController()
-            navController.navigate(HomeFragmentDirections.actionHomeFragmentToNotificationFragment())
+            navController.navigate(HomeFragmentDirections.actionHomeFragmentToTabbedNotificationFragment())
         }
         return super.onOptionsItemSelected(item)
     }

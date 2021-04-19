@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +53,95 @@ class PostFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_post, container, false)
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navController = findNavController()
+
+        post_upload_image.setOnClickListener {
+            getImage()
+        }
+
+        post_button.setOnClickListener {
+
+            val bookName = post_book_name.text.toString()
+            val uniName = post_uni_spinner.selectedItem.toString()
+            val schName = post_schoole_spinner.selectedItem.toString()
+            val detail = post_details.text.toString()
+
+            if (bookName.isEmpty() || uniName.isEmpty() || schName.isEmpty() || detail.isEmpty()) {
+                Toast.makeText(requireContext(), "please fill all fields", Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
+
+            if (imageUri.isNullOrEmpty()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Please upload the book image!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
+//            Upload Post to Firebase
+            progressBar2.visibility = View.VISIBLE
+            val db = Firebase.firestore
+            val userId = Firebase.auth.currentUser?.uid
+            val ref: DocumentReference = db.collection("Posts").document()
+            val postId = ref.id
+
+
+            // Upload the image
+
+            val storageRef =
+                Firebase.storage.reference.child("images/${System.currentTimeMillis()}.jpeg")
+
+            var uploadTask = storageRef.putFile(Uri.parse(imageUri))
+            uploadTask.continueWithTask {
+                if (!it.isSuccessful) {
+                    progressBar2.visibility = View.INVISIBLE
+                }
+                storageRef.downloadUrl
+            }.addOnCompleteListener() { task ->
+                if (task.isSuccessful) {
+                    val downloadUri = task.result
+                    val post: Book = Book(
+                        bookName, userId, postId, StringToUni(uniName),
+                        StringToBookTopic(schName), detail, imageUrl = downloadUri.toString()
+                    )
+                    ref.set(post).addOnSuccessListener {
+                        progressBar2.visibility = View.INVISIBLE
+                        navController.navigate(PostFragmentDirections.actionPostFragmentToHomeFragment())
+                        Toast.makeText(
+                            requireContext(),
+                            "You Have Added Post successfully",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                        .addOnFailureListener {
+                            Toast.makeText(
+                                requireContext(),
+                                "Submit Fail",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            progressBar2.visibility = View.INVISIBLE
+                        }
+                }
+            }
+        }
+    }
+
+    private fun StringToUni(uniName: String): University {
+
+        return when (uniName) {
+            "Just" -> University.Just
+            "JU" -> University.JU
+            "Psut" -> University.Psut
+            else -> University.Psut
+        }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -101,100 +191,5 @@ class PostFragment : Fragment() {
         val photoPickerIntent = Intent(Intent.ACTION_PICK)
         photoPickerIntent.type = "image/*"
         startActivityForResult(photoPickerIntent, PICK_IMAGE_CODE)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        navController = findNavController()
-
-        post_upload_image.setOnClickListener {
-            getImage()
-        }
-
-        post_button.setOnClickListener {
-
-            val bookName = post_book_name.text.toString()
-            val uniName = post_uni_spinner.selectedItem.toString()
-            val schName = post_schoole_spinner.selectedItem.toString()
-            val detail = post_details.text.toString()
-
-            if (bookName.isEmpty() || uniName.isEmpty() || schName.isEmpty() || detail.isEmpty()) {
-                Toast.makeText(requireContext(), "please fill all fields", Toast.LENGTH_SHORT)
-                    .show()
-                return@setOnClickListener
-            }
-
-            if (imageUri.isNullOrEmpty()) {
-                Toast.makeText(
-                    requireContext(),
-                    "Please upload the book image!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                return@setOnClickListener
-            }
-
-//            Upload Post to Firebase
-            progressBar2.visibility = View.VISIBLE
-            val db = Firebase.firestore
-            val userId = Firebase.auth.currentUser?.uid
-            val ref: DocumentReference = db.collection("Posts").document()
-            val postId = ref.id
-
-
-            // Upload the image
-            post_upload_image.isDrawingCacheEnabled = true
-            post_upload_image.buildDrawingCache()
-            val bitmap = post_upload_image.drawable.toBitmap()
-            val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-            val data = baos.toByteArray()
-
-            val storageRef =
-                Firebase.storage.reference.child("images/${System.currentTimeMillis()}.jpeg")
-
-            var uploadTask = storageRef.putBytes(data)
-            uploadTask.continueWithTask {
-                if (!it.isSuccessful) {
-                    progressBar2.visibility = View.INVISIBLE
-                }
-                storageRef.downloadUrl
-            }.addOnCompleteListener() { task ->
-                if (task.isSuccessful) {
-                    val downloadUri = task.result
-                    val post: Book = Book(
-                        bookName, userId, postId, StringToUni(uniName),
-                        StringToBookTopic(schName), detail, imageUrl = downloadUri.toString()
-                    )
-                    ref.set(post).addOnSuccessListener {
-                        progressBar2.visibility = View.INVISIBLE
-                        navController.navigate(PostFragmentDirections.actionPostFragmentToHomeFragment())
-                        Toast.makeText(
-                            requireContext(),
-                            "You Have Added Post successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                        .addOnFailureListener{
-                            Toast.makeText(
-                                requireContext(),
-                                "Submit Fail",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            progressBar2.visibility = View.INVISIBLE
-                        }
-                }
-            }
-        }
-    }
-
-    private fun StringToUni(uniName: String): University {
-
-        return when (uniName) {
-            "Just" -> University.Just
-            "JU" -> University.JU
-            "Psut" -> University.Psut
-            else -> University.Psut
-        }
     }
 }

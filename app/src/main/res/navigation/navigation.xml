@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_homeFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tabbedNotificationFragment"
+            app:destination="@id/tabbedNotificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -140,4 +143,9 @@
             android:name="userId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/tabbedNotificationFragment"
+        android:name="com.jordan.booksexchange.fragments.notification.TabbedNotificationFragment"
+        android:label="Notification"
+        tools:layout="@layout/fragment_tabbed_notification" />
 </navigation>

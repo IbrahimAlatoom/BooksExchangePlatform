@@ -27,7 +27,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
-        android:src="@drawable/bwbook"
+        android:src="@drawable/user"
         app:layout_constraintStart_toStartOf="@+id/big_item_background"
         app:layout_constraintTop_toTopOf="@+id/big_item_background"
         app:riv_corner_radius="16dp"
