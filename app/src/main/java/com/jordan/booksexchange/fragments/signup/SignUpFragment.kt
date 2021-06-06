@@ -51,7 +51,7 @@ class SignUpFragment : Fragment() {
             val password = password_plain_text.text.toString()
             val phone = phone_plain_text.text.toString()
             // check if all rights
-            if (name.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty()) {
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "please fill all fields", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener

@@ -52,7 +52,7 @@ class ChatFragment : Fragment(), OnChatItemClickListener {
         chatViewModel.chatUsers.observe(viewLifecycleOwner){
             chatItemAdapter.clear()
             for(user in it){
-                chatItemAdapter.add(ChatItem(user.userId,this))
+                chatItemAdapter.add(ChatItem(user,this))
             }
 
             (chat_rv.layoutManager as LinearLayoutManager).scrollToPosition(chatItemAdapter.itemCount - 1)

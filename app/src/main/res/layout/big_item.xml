@@ -47,6 +47,7 @@
         app:layout_constraintTop_toTopOf="@+id/big_item_profile_pic" />
 
     <TextView
+
         android:id="@+id/big_item_sch_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,7 +112,7 @@
         android:id="@+id/big_item_book_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="8dp"
         android:text="Math"
         android:textColor="@color/primaryTextColor"
         android:textSize="16sp"

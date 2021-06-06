@@ -13,9 +13,10 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/post_details_bimage"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bwbook"
+        android:adjustViewBounds="true"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        tools:src="@drawable/bwbook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

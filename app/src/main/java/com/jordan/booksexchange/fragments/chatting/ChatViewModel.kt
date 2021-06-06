@@ -19,12 +19,16 @@ class ChatViewModel : ViewModel() {
         get() = _chats
 
     companion object {
-        fun sendChat(chat: Chat, sender: String, target: String) {
+        fun sendChat(chat: Chat, sender: String, target: String, targetName: String = "") {
             FirebaseFirestore.getInstance().collection("chats/$sender/chats/$target/messages")
                 .add(chat).addOnSuccessListener {
                     Firebase.firestore.collection("chats/$sender/users")
-                        .document(target).set(ChatUser(target))
+                        .document(target).set(ChatUser(target, targetName))
                 }
+        }
+        fun sendMessage(chat: Chat, sender: String, target: String) {
+            FirebaseFirestore.getInstance().collection("chats/$sender/chats/$target/messages")
+                .add(chat)
         }
     }
 

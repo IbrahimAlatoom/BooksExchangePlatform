@@ -18,11 +18,12 @@ class InboxRequestItem(val request :Request, val deleteAction: (Request)->Unit) 
         }
 
         viewHolder.itemView.request_item_accept.setOnClickListener {
+            deleteAction(request)
             sendChat(Chat("Hello, Request Accepted", System.currentTimeMillis(),
-                request.publisherId!!, request.userId!!), request.publisherId, request.userId)
+                request.publisherId!!, request.userId!!), request.publisherId, request.userId, request.userId)
 
             sendChat(Chat("Hello, Request Accepted", System.currentTimeMillis(),
-                request.publisherId, request.userId), request.userId, request.publisherId)
+                request.publisherId, request.userId), request.userId, request.publisherId, request.publisherId)
         }
     }
 

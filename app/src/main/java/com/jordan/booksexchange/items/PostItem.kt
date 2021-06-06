@@ -1,6 +1,6 @@
 package com.jordan.booksexchange.items
 
-import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.jordan.booksexchange.R
 import com.jordan.booksexchange.models.Book
 import com.xwray.groupie.GroupieViewHolder
@@ -13,6 +13,11 @@ class PostItem(val book : Book , private val action : (String,String)->Unit) : I
         viewHolder.itemView.setOnClickListener(){
             action.invoke(book.bookId,book.name)
         }
+
+        Glide
+            .with(viewHolder.itemView.context)
+            .load(book.imageUrl)
+            .into(viewHolder.itemView.post_image_item)
     }
 
     override fun getLayout(): Int {

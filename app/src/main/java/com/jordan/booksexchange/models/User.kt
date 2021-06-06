@@ -11,7 +11,6 @@ package com.jordan.booksexchange.models
          BookTopic.NetworkEngineering -> "Network Engineering"
          BookTopic.SoftwareEngineering -> "Software Engineering"
      }
-
  }
 
 fun StringToBookTopic(schName : String) : BookTopic{

@@ -24,6 +24,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var bigItemAdapter: GroupAdapter<GroupieViewHolder>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,11 +40,11 @@ class HomeFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.bar_menu,menu)
+        inflater.inflate(R.menu.bar_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.notification_item){
+        if (item.itemId == R.id.notification_item) {
             val navController = findNavController()
             navController.navigate(HomeFragmentDirections.actionHomeFragmentToTabbedNotificationFragment())
         }
@@ -61,6 +62,7 @@ class HomeFragment : Fragment() {
         homeViewModel.currentUser.observe(viewLifecycleOwner, { user ->
             // set the user name to the view
             val text = "Hello, ${user.name}"
+//            userName = user.name
 //            user_name_id_text.animate().alpha(1f).duration = 800
 //            user_name_id_text.text = text
         })
@@ -78,12 +80,14 @@ class HomeFragment : Fragment() {
         homeViewModel.books.observe(viewLifecycleOwner, {
             bigItemAdapter.clear()
             if (it != null) {
-                for (book in it)
+                for (book in it.reversed()) {
                     bigItemAdapter.add(BigItem(book)
                     { postId, bookName ->
                         openDetailsFragment(postId, bookName)
                     }
                     )
+
+                }
             }
         })
     }

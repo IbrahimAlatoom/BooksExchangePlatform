@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.jordan.booksexchange.R
 import com.jordan.booksexchange.fragments.chatting.ChatViewModel.Companion.sendChat
+import com.jordan.booksexchange.fragments.chatting.ChatViewModel.Companion.sendMessage
 import com.jordan.booksexchange.items.MessageReceiverItem
 import com.jordan.booksexchange.items.MessageSenderItem
 import com.jordan.booksexchange.models.Chat
@@ -47,13 +49,18 @@ class MessagesFragment : Fragment() {
 
         send_chat_button.setOnClickListener {
             val text = chat_edit_text.text.toString()
+
+            if(text.isEmpty()) {
+                return@setOnClickListener
+            }
+
             val chat = Chat(
                 text, System.currentTimeMillis(), Firebase.auth.currentUser?.uid!!, args.userId
             )
-            sendChat(
+            sendMessage(
                 chat, Firebase.auth.currentUser?.uid!!, args.userId
             )
-            sendChat(
+            sendMessage(
                 chat, args.userId, Firebase.auth.currentUser?.uid!!
             )
 
@@ -73,6 +80,8 @@ class MessagesFragment : Fragment() {
                     messagesAdapter.add(MessageReceiverItem(chat))
                 }
             }
+
+            messages_rv.smoothScrollToPosition(chats.lastIndex)
         }
 
     }

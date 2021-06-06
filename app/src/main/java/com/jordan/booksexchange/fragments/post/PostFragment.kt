@@ -27,6 +27,7 @@ import com.jordan.booksexchange.R
 import com.jordan.booksexchange.models.Book
 import com.jordan.booksexchange.models.StringToBookTopic
 import com.jordan.booksexchange.models.University
+import com.jordan.booksexchange.models.User
 import kotlinx.android.synthetic.main.fragment_post.*
 import java.io.ByteArrayOutputStream
 
@@ -106,28 +107,33 @@ class PostFragment : Fragment() {
                 storageRef.downloadUrl
             }.addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
-                    val downloadUri = task.result
-                    val post: Book = Book(
-                        bookName, userId, postId, StringToUni(uniName),
-                        StringToBookTopic(schName), detail, imageUrl = downloadUri.toString()
-                    )
-                    ref.set(post).addOnSuccessListener {
-                        progressBar2.visibility = View.INVISIBLE
-                        navController.navigate(PostFragmentDirections.actionPostFragmentToHomeFragment())
-                        Toast.makeText(
-                            requireContext(),
-                            "You Have Added Post successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                        .addOnFailureListener {
+                    var user = User()
+                    db.collection("users").document(userId!!).get().addOnSuccessListener {
+                        user = it.toObject(User::class.java)!!
+
+                        val downloadUri = task.result
+                        val post: Book = Book(
+                            bookName, userId, user.name, postId, StringToUni(uniName),
+                            StringToBookTopic(schName), detail, imageUrl = downloadUri.toString()
+                        )
+                        ref.set(post).addOnSuccessListener {
+                            progressBar2.visibility = View.INVISIBLE
+                            navController.navigate(PostFragmentDirections.actionPostFragmentToHomeFragment())
                             Toast.makeText(
                                 requireContext(),
-                                "Submit Fail",
+                                "You Have Added Post successfully",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            progressBar2.visibility = View.INVISIBLE
                         }
+                            .addOnFailureListener {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Submit Fail",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                progressBar2.visibility = View.INVISIBLE
+                            }
+                    }
                 }
             }
         }
@@ -139,7 +145,19 @@ class PostFragment : Fragment() {
             "Just" -> University.Just
             "JU" -> University.JU
             "Psut" -> University.Psut
-            else -> University.Psut
+            "ZU" -> University.ZU
+            "YU" -> University.YU
+            "YU" -> University.YU
+            "BAU" -> University.BAU
+            "IU" -> University.IU
+            "WISE" -> University.WISE
+            "MUTAH" -> University.MUTAH
+            "AABU" -> University.AABU
+            "HU" -> University.HU
+            "AHU" -> University.AHU
+            "AAU" -> University.AAU
+            "UOP" -> University.UOP
+            else -> University.Other
         }
     }
 

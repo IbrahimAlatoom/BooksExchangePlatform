@@ -72,8 +72,8 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.jordan.booksexchange.fragments.welcome.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
+        android:label="Welcome"
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_startFragment"
             app:destination="@id/startFragment"
@@ -137,8 +137,8 @@
     <fragment
         android:id="@+id/messagesFragment"
         android:name="com.jordan.booksexchange.fragments.messages.MessagesFragment"
-        android:label="fragment_messages"
-        tools:layout="@layout/fragment_messages" >
+        android:label="Messages"
+        tools:layout="@layout/fragment_messages">
         <argument
             android:name="userId"
             app:argType="string" />
