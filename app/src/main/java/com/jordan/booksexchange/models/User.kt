@@ -3,34 +3,32 @@ package com.jordan.booksexchange.models
  fun getTopicBookName(type: BookTopic): String {
      return when (type) {
          BookTopic.Medicine -> "Medicine"
-         BookTopic.ComputerScience -> "Computer Science"
-         BookTopic.ComputerEngineering -> "Computer Engineering"
-         BookTopic.IndustrialEngineering -> "Industrial Engineering"
-         BookTopic.Math -> "Math"
-         BookTopic.MechanicalEngineering -> "Mechanical Engineering"
-         BookTopic.NetworkEngineering -> "Network Engineering"
-         BookTopic.SoftwareEngineering -> "Software Engineering"
+         BookTopic.IT -> "IT"
+         BookTopic.Science -> "Science"
+         BookTopic.Engineering -> "Engineering"
+         BookTopic.Pharmacy -> "Pharmacy"
+         BookTopic.Dentistry -> "Dentistry"
+         BookTopic.Art -> "Art"
+         else -> "Another"
      }
  }
 
 fun StringToBookTopic(schName : String) : BookTopic{
     return when(schName) {
         "Medicine" -> BookTopic.Medicine
-        "Computer Science" -> BookTopic.ComputerScience
-        "Computer Engineering"  -> BookTopic.ComputerEngineering
-        "Industrial Engineering" ->  BookTopic.IndustrialEngineering
-        "Math"  ->  BookTopic.Math
-        "Mechanical Engineering"  -> BookTopic.MechanicalEngineering
-        "Network Engineering"  ->  BookTopic.NetworkEngineering
-        "Software Engineering" ->  BookTopic.SoftwareEngineering
-
-        else -> BookTopic.Medicine
+        "IT" -> BookTopic.IT
+        "Science"  -> BookTopic.Science
+        "Engineering" ->  BookTopic.Engineering
+        "Pharmacy"  ->  BookTopic.Pharmacy
+        "Dentistry"  -> BookTopic.Dentistry
+        "Art"  ->  BookTopic.Art
+        "Another" ->  BookTopic.Another
+        else -> BookTopic.Another
     }
 }
 
 enum class BookTopic() {
-    ComputerScience, ComputerEngineering, Medicine , Math , IndustrialEngineering ,
-    MechanicalEngineering ,NetworkEngineering , SoftwareEngineering
+    IT , Medicine , Science , Engineering , Pharmacy , Dentistry , Art , Another
 }
 
 
